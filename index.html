@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCraft | Criação de Sites Profissionais e Landing Pages</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#090d16',
+                            card: '#0f172a',
+                            border: '#1e293b',
+                            cyan: '#06b6d4',
+                            violet: '#8b5cf6',
+                            blue: '#3b82f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #090d16;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.2);
+        }
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Gradient Border Button */
+        .btn-gradient {
+            background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+            transition: all 0.3s ease;
+        }
+        .btn-gradient:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="fixed top-0 left-0 w-full z-50 glass border-b border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-violet-600 flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <span class="text-2xl font-extrabold tracking-tight text-white">Web<span class="gradient-text">Craft</span></span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#inicio" class="hover:text-cyan-400 transition-colors">Início</a>
+                <a href="#exemplos" class="hover:text-cyan-400 transition-colors">Exemplos</a>
+                <a href="#servicos" class="hover:text-cyan-400 transition-colors">Serviços</a>
+                <a href="#precos" class="hover:text-cyan-400 transition-colors">Preços</a>
+                <a href="#contato" class="hover:text-cyan-400 transition-colors">Contato</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="https://wa.me/5511943382371?text=Olá!%20Vim%20pelo%20site%20da%20WebCraft%20e%20gostaria%20de%20solicitar%20um%20orçamento." target="_blank" class="btn-gradient px-5 py-2.5 rounded-xl font-semibold text-sm text-white flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Solicitar Orçamento</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white focus:outline-none text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-b border-slate-800 px-4 pt-4 pb-6 space-y-4">
+            <a href="#inicio" class="block text-slate-300 hover:text-cyan-400 py-2">Início</a>
+            <a href="#exemplos" class="block text-slate-300 hover:text-cyan-400 py-2">Exemplos</a>
+            <a href="#servicos" class="block text-slate-300 hover:text-cyan-400 py-2">Serviços</a>
+            <a href="#precos" class="block text-slate-300 hover:text-cyan-400 py-2">Preços</a>
+            <a href="#contato" class="block text-slate-300 hover:text-cyan-400 py-2">Contato</a>
+            <a href="https://wa.me/5511943382371?text=Olá!%20Vim%20pelo%20site%20da%20WebCraft%20e%20gostaria%20de%20solicitar%20um%20orçamento." target="_blank" class="btn-gradient w-full py-3 rounded-xl font-semibold text-center text-white block">
+                Solicitar Orçamento
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <!-- Background Glow Effects -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-violet-600/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-slate-700/60 mb-8 animate-fade-in">
+                <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-300">Desenvolvimento Web de Alta Performance</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-tight sm:leading-none">
+                Transforme sua marca com um site <span class="gradient-text">moderno, rápido</span> e focado em vendas.
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto font-normal leading-relaxed">
+                Desenvolvemos Landing Pages e Websites profissionais feitos sob medida para atrair clientes, transmitir autoridade e alavancar o seu negócio na internet.
+            </p>
+
+            <!-- Highlight Badge: Negotiation -->
+            <div class="mt-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-semibold">
+                <i class="fa-solid fa-handshake"></i>
+                <span>Valores flexíveis e 100% negociáveis — adaptamos ao seu orçamento!</span>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://wa.me/5511943382371?text=Olá!%20Gostaria%20de%20negociar%20um%20orçamento%20para%20a%20criação%20de%20um%20site." target="_blank" class="btn-gradient w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-lg text-white flex items-center justify-center gap-3 shadow-lg shadow-cyan-500/25">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>Negociar Valor no WhatsApp</span>
+                </a>
+                <a href="#exemplos" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-lg text-slate-200 glass hover:bg-slate-800/80 transition-all text-center border border-slate-700">
+                    Ver Exemplos de Sites
+                </a>
+            </div>
+
+            <!-- Fast Badges -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto pt-8 border-t border-slate-800/60 text-slate-400">
+                <div class="flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-[#06b6d4] fa-bolt text-cyan-400 text-xl"></i>
+                    <span class="text-sm font-medium text-slate-300">Carregamento Ultra Rápido</span>
+                </div>
+                <div class="flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-mobile-screen-button text-violet-400 text-xl"></i>
+                    <span class="text-sm font-medium text-slate-300">100% Responsivo</span>
+                </div>
+                <div class="flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-magnifying-glass-chart text-blue-400 text-xl"></i>
+                    <span class="text-sm font-medium text-slate-300">Otimizado para SEO</span>
+                </div>
+                <div class="flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-headset text-emerald-400 text-xl"></i>
+                    <span class="text-sm font-medium text-slate-300">Suporte Dedicado</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA DE EXEMPLOS / PORTFÓLIO -->
+    <section id="exemplos" class="py-24 relative bg-slate-950/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
+                    Exemplos de <span class="gradient-text">Sites Que Criamos</span>
+                </h2>
+                <p class="mt-4 text-slate-400 text-lg">
+                    Confira alguns dos nossos projetos e modelos inspiradores desenvolvidos com as melhores tecnologias do mercado.
+                </p>
+                
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-2 mt-8">
+                    <button class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold bg-cyan-500 text-slate-950 transition-all" data-filter="all">Todos</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-semibold glass text-slate-300 hover:text-white transition-all" data-filter="landing">Landing Pages</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-semibold glass text-slate-300 hover:text-white transition-all" data-filter="ecommerce">E-commerce</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-semibold glass text-slate-300 hover:text-white transition-all" data-filter="corp">Corporativo</button>
+                </div>
+            </div>
+
+            <!-- Portfolio Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                
+                <!-- Project Card 1 -->
+                <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="ecommerce">
+                    <div class="relative overflow-hidden h-64 sm:h-72">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Loja Virtual Modern" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-cyan-500/90 text-slate-950 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-md">Loja Virtual</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">TechStore - E-commerce de Eletrônicos</h3>
+                        <p class="text-slate-400 text-sm mb-6">
+                            Loja virtual de alta performance com catálogo interativo, checkout transparente e design ultra responsivo.
+                        </p>
+                        <button onclick="openPreview('TechStore - E-commerce', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80', 'Plataforma completa de e-commerce integrada com gateways de pagamento modernos e experiência do usuário simplificada.')" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold border border-slate-700 transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Ver Demonstração</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="landing">
+                    <div class="relative overflow-hidden h-64 sm:h-72">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Landing Page SaaS" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-violet-500 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-md">Landing Page</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">FinTech App - Página de Vendas</h3>
+                        <p class="text-slate-400 text-sm mb-6">
+                            Landing page minimalista focada na conversão de novos usuários para um aplicativo financeiro.
+                        </p>
+                        <button onclick="openPreview('FinTech App Landing Page', 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80', 'Design minimalista focado em converter visitantes em leads qualificados com seções de prova social e CTAs estratégicos.')" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold border border-slate-700 transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Ver Demonstração</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="corp">
+                    <div class="relative overflow-hidden h-64 sm:h-72">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Site Corporativo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-blue-500 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-md">Corporativo</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Nexus Consultoria - Site Institucional</h3>
+                        <p class="text-slate-400 text-sm mb-6">
+                            Website corporativo elegante com apresentação de serviços, equipe e sistema de agendamento online.
+                        </p>
+                        <button onclick="openPreview('Nexus Consultoria', 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80', 'Website institucional completo para empresas que querem consolidar autoridade e credibilidade no mercado.')" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold border border-slate-700 transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Ver Demonstração</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="landing">
+                    <div class="relative overflow-hidden h-64 sm:h-72">
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="Portfólio Criativo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-emerald-500 text-slate-950 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-md">Portfólio / Criativo</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Studio Architecture - Portfólio</h3>
+                        <p class="text-slate-400 text-sm mb-6">
+                            Portfólio visual interativo para escritório de arquitetura com galeria de alta resolução.
+                        </p>
+                        <button onclick="openPreview('Studio Architecture', 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80', 'Site focado em profissionais autônomos e arquitetos com galeria imersiva para mostrar seus melhores projetos.')" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold border border-slate-700 transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Ver Demonstração</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE SERVIÇOS -->
+    <section id="servicos" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
+                    Soluções sob medida para o seu <span class="gradient-text">Sucesso Digital</span>
+                </h2>
+                <p class="mt-4 text-slate-400 text-lg">
+                    Tudo o que sua empresa precisa para se destacar na internet com profissionalismo.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="w-14 h-14 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Landing Pages de Alta Conversão</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Páginas estratégicas desenhadas exclusivamente para transformar visitantes em clientes pagantes.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="w-14 h-14 rounded-xl bg-violet-500/10 text-violet-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-violet-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Sites Institucionais</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Websites corporativos completos para estabelecer autoridade e apresentar seus serviços ao mercado.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="w-14 h-14 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Lojas Virtuais / E-commerce</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Plataformas de vendas robustas, seguras e fáceis de gerenciar para você vender seus produtos 24/7.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="w-14 h-14 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all">
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Otimização SEO & Velocidade</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Deixamos seu site ultrarrápido e preparado para alcançar as primeiras posições nos buscadores como o Google.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE PLANOS E PREÇOS -->
+    <section id="precos" class="py-24 relative bg-slate-950/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <!-- Negotiation Callout Box -->
+                <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cyan-500/10 border border-cyan-500/40 text-cyan-300 text-sm font-bold mb-6">
+                    <i class="fa-solid fa-comments-dollar text-cyan-400 text-lg"></i>
+                    <span>Preços e Formas de Pagamento Abertos a Negociação!</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
+                    Planos Flexíveis e <span class="gradient-text">Negociáveis</span>
+                </h2>
+                <p class="mt-4 text-slate-400 text-lg">
+                    Estes são nossos pacotes base, mas você pode negociar o valor ideal diretamente conosco de acordo com a sua necessidade.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Plan 1 -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-cyan-400 text-sm font-semibold uppercase tracking-wider">Start</span>
+                            <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-md font-semibold border border-emerald-500/30">Preço Negociável</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mt-1">Landing Page Express</h3>
+                        <p class="text-slate-400 text-sm mt-2">Ideal para campanhas de anúncios rápidos ou produtos únicos.</p>
+                        <div class="my-6">
+                            <span class="text-slate-400 text-xs block mb-1">A partir de</span>
+                            <span class="text-4xl font-extrabold text-white">R$ 790</span>
+                            <span class="text-slate-400 text-sm"> / negociável</span>
+                        </div>
+                        <ul class="space-y-4 text-sm text-slate-300">
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-400"></i>
+                                <span>Página Única de Alta Conversão</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-400"></i>
+                                <span>Botão Direto para WhatsApp</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-400"></i>
+                                <span>Design 100% Responsivo</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-400"></i>
+                                <span>Entrega em até 5 dias</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/5511943382371?text=Olá!%20Gostaria%20de%20negociar%20o%20valor%20do%20Plano%20Landing%20Page%20Express." target="_blank" class="mt-8 w-full py-3.5 rounded-xl font-semibold text-center text-slate-200 glass hover:bg-slate-800 transition-colors border border-slate-700 block">
+                        Fazer Proposta no WhatsApp
+                    </a>
+                </div>
+
+                <!-- Plan 2 (Highlighted) -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between border-2 border-cyan-500/50 relative shadow-2xl shadow-cyan-500/10 scale-105 bg-slate-900/80">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-violet-600 text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full shadow-lg">
+                        Mais Popular & Negociável
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-cyan-400 text-sm font-semibold uppercase tracking-wider">Business</span>
+                            <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-md font-semibold border border-emerald-500/30">Valor Aberto</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mt-1">Site Institucional</h3>
+                        <p class="text-slate-400 text-sm mt-2">Para empresas que precisam de presença forte e autoridade online.</p>
+                        <div class="my-6">
+                            <span class="text-slate-400 text-xs block mb-1">A partir de</span>
+                            <span class="text-4xl font-extrabold text-white">R$ 1.490</span>
+                            <span class="text-slate-400 text-sm"> / negociável</span>
+                        </div>
+                        <ul class="space-y-4 text-sm text-slate-300">
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-400"></i>
+                                <span>Até 5 Páginas (Home, Sobre, Serviços, etc.)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-400"></i>
+                                <span>Otimização Avançada de SEO</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-400"></i>
+                                <span>Formulário de Contato Personalizado</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-400"></i>
+                                <span>Integração com Redes Sociais</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-400"></i>
+                                <span>Suporte e Treinamento de 30 dias</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/5511943382371?text=Olá!%20Tenho%20interesse%20no%20Plano%20Site%20Institucional%20e%20gostaria%20de%20negociar%20o%20preço." target="_blank" class="mt-8 w-full btn-gradient py-3.5 rounded-xl font-bold text-center text-white block shadow-lg shadow-cyan-500/20">
+                        Negociar Este Plano
+                    </a>
+                </div>
+
+                <!-- Plan 3 -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-cyan-400 text-sm font-semibold uppercase tracking-wider">E-Commerce</span>
+                            <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-md font-semibold border border-emerald-500/30">Preço Negociável</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mt-1">Loja Virtual Completa</h3>
+                        <p class="text-slate-400 text-sm mt-2">Plataforma pronta para você cadastrar produtos e vender online.</p>
+                        <div class="my-6">
+                            <span class="text-slate-400 text-xs block mb-1">A partir de</span>
+                            <span class="text-4xl font-extrabold text-white">R$ 2.690</span>
+                            <span class="text-slate-400 text-sm"> / negociável</span>
+                        </div>
+                        <ul class="space-y-4 text-sm text-slate-300">
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-400"></i>
+                                <span>Catálogo Ilimitado de Produtos</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-400"></i>
+                                <span>Pagamento no Cartão e Pix</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-400"></i>
+                                <span>Cálculo Automático de Frete</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-400"></i>
+                                <span>Painel Administrativo Fácil</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/5511943382371?text=Olá!%20Gostaria%20de%20negociar%20o%20valor%20para%20a%20criação%20de%20uma%20Loja%20Virtual." target="_blank" class="mt-8 w-full py-3.5 rounded-xl font-semibold text-center text-slate-200 glass hover:bg-slate-800 transition-colors border border-slate-700 block">
+                        Fazer Proposta no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULÁRIO DE CONTATO E WHATSAPP -->
+    <section id="contato" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                        Vamos tirar o seu projeto <span class="gradient-text">do papel?</span>
+                    </h2>
+                    <p class="mt-4 text-slate-400 text-lg leading-relaxed">
+                        Preencha o formulário para enviar os detalhes do seu projeto diretamente para o nosso WhatsApp.
+                    </p>
+
+                    <div class="mt-8 space-y-6">
+                        <a href="https://wa.me/5511943382371?text=Olá!%20Gostaria%20de%20falar%20com%20um%20atendente." target="_blank" class="flex items-center gap-4 p-4 rounded-xl glass hover:border-cyan-500/50 transition-colors">
+                            <div class="w-12 h-12 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400">Atendimento Imediato via WhatsApp</p>
+                                <p class="text-lg font-bold text-white">(11) 94338-2371</p>
+                            </div>
+                        </a>
+
+                        <a href="mailto:contatowebcria@gmail.com?subject=Orçamento%20de%20Site%20-%20WebCraft" class="flex items-center gap-4 p-4 rounded-xl glass hover:border-cyan-500/50 transition-colors">
+                            <div class="w-12 h-12 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400">E-mail Comercial</p>
+                                <p class="text-lg font-bold text-white">contatowebcria@gmail.com</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Seu Nome</label>
+                            <input type="text" id="form-name" required placeholder="Digite seu nome completo" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Seu E-mail ou Telefone</label>
+                            <input type="text" id="form-contact" required placeholder="exemplo@email.com ou (11) 90000-0000" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Tipo de Site Desejado</label>
+                            <select id="form-type" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500 transition-colors">
+                                <option value="Landing Page Express">Landing Page de Alta Conversão</option>
+                                <option value="Site Institucional">Site Institucional / Empresa</option>
+                                <option value="Loja Virtual">Loja Virtual / E-commerce</option>
+                                <option value="Portfólio / Outro">Portfólio / Outro</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Conte um pouco sobre o seu negócio</label>
+                            <textarea id="form-message" rows="4" required placeholder="Descreva brevemente o seu objetivo com o site..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full btn-gradient py-4 rounded-xl font-bold text-white text-lg shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            Enviar Orçamento no WhatsApp
+                        </button>
+                    </form>
+
+                    <!-- Success Message Alert -->
+                    <div id="form-success" class="hidden mt-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-center font-medium">
+                        <i class="fa-solid fa-circle-check text-xl mb-1 block"></i>
+                        Redirecionando para o WhatsApp...
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/5511943382371?text=Olá!%20Gostaria%20de%20saber%20mais%20informações%20sobre%20a%20criação%20de%20sites." target="_blank" aria-label="Contato via WhatsApp" class="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-emerald-500 text-white flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform duration-300 shadow-emerald-500/40">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800/80 py-12 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-violet-600 flex items-center justify-center text-white text-sm font-bold">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <span class="text-xl font-extrabold text-white">Web<span class="gradient-text">Craft</span></span>
+            </div>
+
+            <p class="text-sm text-slate-400 text-center">
+                © 2026 WebCraft. Todos os direitos reservados. Desenvolvimento de sites profissionais.
+            </p>
+
+            <div class="flex gap-4 text-slate-400">
+                <a href="mailto:contatowebcria@gmail.com" title="E-mail" class="hover:text-cyan-400 transition-colors text-xl"><i class="fa-regular fa-envelope"></i></a>
+                <a href="#" class="hover:text-cyan-400 transition-colors text-xl"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/5511943382371" target="_blank" class="hover:text-cyan-400 transition-colors text-xl"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL PREVIEW DE SITE -->
+    <div id="preview-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card max-w-3xl w-full rounded-2xl overflow-hidden border border-slate-700 shadow-2xl relative">
+            <!-- Modal Header -->
+            <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900">
+                <h3 id="modal-title" class="text-lg font-bold text-white">Preview do Projeto</h3>
+                <button onclick="closePreview()" class="text-slate-400 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="p-6">
+                <img id="modal-img" src="" alt="Preview" class="w-full h-64 sm:h-80 object-cover rounded-xl border border-slate-800 mb-4">
+                <p id="modal-desc" class="text-slate-300 text-sm leading-relaxed mb-6"></p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a id="modal-wa-btn" href="https://wa.me/5511943382371" target="_blank" class="btn-gradient flex-1 py-3 rounded-xl font-bold text-center text-white flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Quero um site similar a este
+                    </a>
+                    <button onclick="closePreview()" class="px-6 py-3 rounded-xl glass hover:bg-slate-800 text-slate-300 font-semibold border border-slate-700">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Portfolio Category Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-cyan-500', 'text-slate-950');
+                    b.classList.add('glass', 'text-slate-300');
+                });
+                btn.classList.add('active', 'bg-cyan-500', 'text-slate-950');
+                btn.classList.remove('glass', 'text-slate-300');
+
+                const filter = btn.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal Preview Functions
+        function openPreview(title, imgUrl, description) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-img').src = imgUrl;
+            document.getElementById('modal-desc').innerText = description;
+            
+            const waBtn = document.getElementById('modal-wa-btn');
+            waBtn.href = `https://wa.me/5511943382371?text=Olá!%20Tenho%20interesse%20em%20um%20site%20no%20estilo%20do%20${encodeURIComponent(title)}.`;
+
+            document.getElementById('preview-modal').classList.remove('hidden');
+        }
+
+        function closePreview() {
+            document.getElementById('preview-modal').classList.add('hidden');
+        }
+
+        // WhatsApp Form Redirection
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('form-name').value;
+            const contact = document.getElementById('form-contact').value;
+            const siteType = document.getElementById('form-type').value;
+            const message = document.getElementById('form-message').value;
+
+            const textMessage = `Olá! Meu nome é *${name}* (${contact}).%0A%0A*Interesse:* ${siteType}%0A*Detalhes:* ${message}`;
+            const whatsappUrl = `https://wa.me/5511943382371?text=${encodeURI(textMessage)}`;
+
+            const successMsg = document.getElementById('form-success');
+            successMsg.classList.remove('hidden');
+
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 800);
+        }
+    </script>
+</body>
+</html>
